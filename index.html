@@ -483,14 +483,14 @@
     font-size: 14px;
     letter-spacing: 0.4px;
     line-height: 2;
-    color: var(--muted);
+    color: var(--cream);
     font-weight: 300;
   }
 
   /* ── SERVICES ── */
   .services-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(4, 1fr);
     gap: 1px;
     background: rgba(30,58,95,0.3);
   }
@@ -531,7 +531,7 @@
     font-size: 14px;
     letter-spacing: 0.4px;
     line-height: 2;
-    color: var(--muted);
+    color: var(--cream);
     font-weight: 300;
   }
 
@@ -842,7 +842,7 @@
 
     .section { padding: 80px 28px; }
     .problems-grid { grid-template-columns: 1fr; }
-    .services-grid { grid-template-columns: 1fr; }
+    .services-grid { grid-template-columns: 1fr 1fr; }
     .metrics-row { grid-template-columns: 1fr 1fr; }
     .about-layout { grid-template-columns: 1fr; }
     .client-layout { grid-template-columns: 1fr; }
@@ -858,7 +858,7 @@
 <!-- NAV -->
 <nav id="nav">
   <a class="nav-logo" href="#">
-    <img src="plinth-strategies-navy.png" alt="Plinth Strategies" style="height: 42px; width: auto;">
+    <img src="plinth-strategies-vertical-navy.png" alt="Plinth Strategies" style="height: 38px; width: auto;">
   </a>
 
   <div class="nav-links" id="navLinks">
@@ -881,12 +881,6 @@
   <div class="corner corner-tr"></div>
   <div class="corner corner-bl"></div>
   <div class="corner corner-br"></div>
-
-  <div class="hero-mark">
-    <img src="plinth-strategies-navy.png" alt="Plinth Strategies" style="height: 80px; width: auto;">
-  </div>
-
-  <div class="eyebrow">Strategic Advisory</div>
 
   <h1 class="hero-headline">
     We build the foundation.<br><em>You scale.</em>
@@ -912,13 +906,11 @@
   <div class="pillars">
     <div class="pillar">
       <div class="pillar-accent"></div>
-      <span class="pillar-num">01</span>
       <div class="pillar-title">Operational Infrastructure</div>
       <p class="pillar-body">We build the systems, workflows, and processes that let hypergrowth companies scale without the chaos &mdash; so your team can move fast without breaking things.</p>
     </div>
     <div class="pillar">
       <div class="pillar-accent"></div>
-      <span class="pillar-num">02</span>
       <div class="pillar-title">Revenue Growth Strategy</div>
       <p class="pillar-body">We identify innovative ways to leverage your existing assets, unlock new revenue streams, and build strategic partnerships &mdash; without scaling headcount aggressively.</p>
     </div>
@@ -937,32 +929,26 @@
     </div>
     <div class="problems-grid reveal">
       <div class="problem-card">
-        <span class="problem-num">01</span>
         <h3>Can't Scale Custom Work</h3>
         <p>Sales is promising one-off solutions. Delivery is overwhelmed. Margins are eroding with every bespoke engagement, and there's no clear path to making custom work repeatable.</p>
       </div>
       <div class="problem-card">
-        <span class="problem-num">02</span>
         <h3>Have Inconsistent Deal Structures</h3>
         <p>Every deal is negotiated from scratch. Legal, finance, and ops are bottlenecked reviewing unique terms. Pricing is inconsistent and margin visibility is poor.</p>
       </div>
       <div class="problem-card">
-        <span class="problem-num">03</span>
         <h3>Need a Solutions Function</h3>
         <p>No one owns the critical space between what sales promises and what product delivers. Technical pre-sales, solution design, and implementation handoffs are falling through the cracks.</p>
       </div>
       <div class="problem-card">
-        <span class="problem-num">04</span>
         <h3>Have Unmonetized Partnerships</h3>
         <p>Strategic partnerships have been signed but sit dormant. There's no commercialization path, no activation plan, and no revenue tracking against partnership investments.</p>
       </div>
       <div class="problem-card">
-        <span class="problem-num">05</span>
         <h3>Want to Productize Services</h3>
         <p>Custom implementation work could be productized into scalable offerings, but no one has the bandwidth or framework to package, price, and bring them to market.</p>
       </div>
       <div class="problem-card">
-        <span class="problem-num">06</span>
         <h3>Are Outgrowing Their Infrastructure</h3>
         <p>The processes, tools, and team structures that worked at $20M simply don't work at $50M. Growth has outpaced the operational backbone needed to sustain it.</p>
       </div>
@@ -1006,6 +992,10 @@
       <div class="service-card">
         <h3>Solutioning</h3>
         <p>Consultative engagements that bridge the gap between what sales promises and what delivery builds.</p>
+      </div>
+      <div class="service-card">
+        <h3>AI Fluency</h3>
+        <p>Leveraging AI to automate workflows, accelerate decision-making, and build foundational support across every core service we deliver.</p>
       </div>
     </div>
   </div>
