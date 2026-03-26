@@ -15,8 +15,9 @@
     --gold:   #c8a96e;
     --gold2:  #e8c98e;
     --cream:  #f0ede8;
-    --muted:  #4a6a8a;
+    --muted:  #f0ede8;
     --muted2: #2a4a6a;
+    --nav-link: #8aa0b8;
   }
 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -135,7 +136,7 @@
     font-size: 9px;
     letter-spacing: 3px;
     text-transform: uppercase;
-    color: var(--muted);
+    color: var(--nav-link);
     text-decoration: none;
     font-weight: 400;
     transition: color 0.25s ease;
@@ -573,7 +574,7 @@
   /* ── ABOUT ── */
   .about-layout {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
     gap: 64px;
     align-items: start;
   }
@@ -643,21 +644,12 @@
   .step {
     display: flex;
     align-items: center;
-    gap: 32px;
+    gap: 40px;
     padding: 28px 40px;
     background: var(--navy2);
     transition: background 0.3s ease;
   }
   .step:hover { background: rgba(22, 40, 68, 0.8); }
-
-  .step-num {
-    font-family: 'Raleway', sans-serif;
-    font-size: 14px;
-    letter-spacing: 3px;
-    color: var(--gold);
-    opacity: 0.6;
-    min-width: 32px;
-  }
 
   .step h4 {
     font-family: 'Raleway', sans-serif;
@@ -665,7 +657,8 @@
     font-size: 18px;
     color: var(--cream);
     letter-spacing: 1px;
-    min-width: 280px;
+    min-width: 340px;
+    flex-shrink: 0;
   }
 
   .step p {
@@ -847,7 +840,7 @@
     .about-layout { grid-template-columns: 1fr; }
     .client-layout { grid-template-columns: 1fr; }
     .step { flex-direction: column; gap: 8px; align-items: flex-start; padding: 24px 28px; }
-    .step h4 { min-width: auto; }
+    .step h4 { min-width: auto; flex-shrink: 1; }
 
     footer { padding: 24px 28px; flex-direction: column; gap: 10px; text-align: center; }
   }
@@ -1038,26 +1031,11 @@
       <div class="section-title">Craig <em>Becher</em></div>
       <div class="section-sub">Revenue Commercialization Expert &nbsp;&middot;&nbsp; Ad Tech & Digital Media</div>
     </div>
-    <div class="about-layout reveal">
-      <div class="about-text">
-        <p>18+ years in ad tech and digital media, building and scaling solutions functions, partnerships, and revenue operations from the ground up at companies navigating the complexity of hypergrowth.</p>
-        <p>My approach is hands-on and execution-focused. I don't just advise &mdash; I embed with your team to build the frameworks, processes, and strategies that turn custom work into scalable revenue engines.</p>
-        <p>From cross-functional team leadership and solution architecture to GTM strategy, deal structuring, and pricing strategy &mdash; senior-level execution without a full-time executive hire.</p>
-      </div>
-      <div class="highlight-cards">
-        <div class="highlight-card">
-          <h4>OpenX</h4>
-          <p>Senior Director, Global Solutions &amp; GTM Strategy &amp; Ops &amp; Sales Strategy &amp; Commercialization</p>
-        </div>
-        <div class="highlight-card">
-          <h4>Hybrid Theory</h4>
-          <p>Senior Director, Channel Partnerships &amp; Sales Director</p>
-        </div>
-        <div class="highlight-card">
-          <h4>Earlier Career</h4>
-          <p>Senior roles at MiQ and Rocket Fuel driving revenue and strategic partnerships</p>
-        </div>
-      </div>
+    <div class="about-text reveal" style="max-width: 900px;">
+      <p>18+ years in ad tech and digital media, building and scaling solutions functions, partnerships, and revenue operations from the ground up at companies navigating the complexity of hypergrowth.</p>
+      <p>My entire career has been rooted in startup culture &mdash; fast-moving, resource-constrained environments where the only way to win is to roll up your sleeves and get it done. I've been the person who builds the playbook while running the play, standing up new functions, creating frameworks from scratch, and doing the hard operational work that sets a business up for its next growth phase.</p>
+      <p>My approach is hands-on and execution-focused. I don't just advise &mdash; I embed with your team to build the frameworks, processes, and strategies that turn custom work into scalable revenue engines. That startup DNA means I move fast, stay scrappy, and focus relentlessly on what actually moves the needle.</p>
+      <p>From cross-functional team leadership and solution architecture to GTM strategy, deal structuring, and pricing strategy &mdash; senior-level execution without a full-time executive hire.</p>
     </div>
   </div>
 </section>
@@ -1068,36 +1046,29 @@
     <div class="reveal">
       <div class="section-label">How We Work</div>
       <div class="section-title">Engagement <em>Model</em></div>
-      <div class="section-sub">Retainer-based engagements with defined scope protections</div>
     </div>
     <div class="steps reveal">
       <div class="step">
-        <span class="step-num">01</span>
         <h4>Strategic Assessment & Roadmap</h4>
         <p>Comprehensive evaluation in the first 30 days</p>
       </div>
       <div class="step">
-        <span class="step-num">02</span>
         <h4>Framework & Process Design</h4>
         <p>Documentation and systematization of workflows</p>
       </div>
       <div class="step">
-        <span class="step-num">03</span>
         <h4>Implementation Support</h4>
         <p>Hands-on support and team training</p>
       </div>
       <div class="step">
-        <span class="step-num">04</span>
         <h4>Leadership Sync</h4>
         <p>Weekly alignment with executive team</p>
       </div>
       <div class="step">
-        <span class="step-num">05</span>
         <h4>Ongoing Access</h4>
         <p>Slack and email access between sessions</p>
       </div>
       <div class="step">
-        <span class="step-num">06</span>
         <h4>Quarterly Reviews</h4>
         <p>Business reviews to track progress and recalibrate</p>
       </div>
