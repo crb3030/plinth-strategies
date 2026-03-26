@@ -1,0 +1,1232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Plinth Strategies | We Build the Foundation. You Scale.</title>
+<meta name="description" content="Plinth Strategies helps Series B-D B2B tech companies scale revenue through GTM strategy, operational efficiency, strategic partnerships, and solutioning.">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy:   #0d1b2e;
+    --navy2:  #0a1520;
+    --navy3:  #1e3a5f;
+    --navy4:  #162844;
+    --gold:   #c8a96e;
+    --gold2:  #e8c98e;
+    --cream:  #f0ede8;
+    --muted:  #4a6a8a;
+    --muted2: #2a4a6a;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--navy);
+    color: var(--cream);
+    font-family: 'Montserrat', sans-serif;
+    overflow-x: hidden;
+  }
+
+  /* Noise texture */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+    opacity: 0.03;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* Radial glow */
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 60% 50% at 15% 50%, rgba(30,58,95,0.45) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 40% at 85% 20%, rgba(200,169,110,0.06) 0%, transparent 60%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 60px;
+    background: rgba(13, 27, 46, 0.92);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(30,58,95,0.5);
+    transition: all 0.4s ease;
+  }
+  nav.scrolled {
+    padding: 14px 60px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+  }
+
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    text-decoration: none;
+  }
+
+  .nav-divider {
+    width: 1px;
+    height: 30px;
+    background: linear-gradient(to bottom, transparent, var(--navy3), transparent);
+  }
+
+  .nav-wordmark {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .nav-brand {
+    display: flex;
+    align-items: baseline;
+    line-height: 1;
+  }
+
+  .nav-name-primary {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    font-size: 22px;
+    color: var(--cream);
+    letter-spacing: -0.3px;
+  }
+
+  .nav-name-secondary {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: 22px;
+    color: var(--gold);
+    letter-spacing: -0.3px;
+    margin-left: 6px;
+  }
+
+  .nav-tag {
+    font-size: 7.5px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-weight: 400;
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+  }
+
+  .nav-links a {
+    font-size: 9px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-decoration: none;
+    font-weight: 400;
+    transition: color 0.25s ease;
+  }
+  .nav-links a:hover { color: var(--gold); }
+
+  .nav-links .cta-link {
+    padding: 10px 24px;
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    position: relative;
+    overflow: hidden;
+    transition: color 0.35s ease;
+  }
+  .nav-links .cta-link::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--gold);
+    transform: translateX(-101%);
+    transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .nav-links .cta-link:hover::before { transform: translateX(0); }
+  .nav-links .cta-link:hover { color: var(--navy); }
+  .nav-links .cta-link span { position: relative; z-index: 1; }
+
+  .hamburger { display: none; cursor: pointer; background: none; border: none; padding: 4px; }
+  .hamburger span { display: block; width: 22px; height: 1.5px; background: var(--cream); margin: 5px 0; transition: 0.3s; }
+
+  /* ── SECTIONS ── */
+  .section {
+    position: relative;
+    z-index: 1;
+    padding: 120px 60px;
+  }
+
+  .section-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .section-label {
+    font-size: 9px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 400;
+    margin-bottom: 16px;
+  }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: clamp(32px, 4.5vw, 52px);
+    line-height: 1.1;
+    color: var(--cream);
+    margin-bottom: 12px;
+  }
+
+  .section-title em {
+    font-style: italic;
+    color: var(--gold);
+    font-weight: 300;
+  }
+
+  .section-sub {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 300;
+    font-size: clamp(16px, 2vw, 20px);
+    color: var(--muted);
+    margin-bottom: 56px;
+  }
+
+  .gold-rule {
+    width: 40px;
+    height: 1.5px;
+    background: var(--gold);
+    margin-bottom: 48px;
+    opacity: 0.6;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 120px 60px 80px;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero .rule-top, .hero .rule-bottom {
+    position: absolute;
+    left: 60px;
+    right: 60px;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--navy3) 20%, var(--navy3) 80%, transparent);
+  }
+  .hero .rule-top { top: 80px; }
+  .hero .rule-bottom { bottom: 0; }
+
+  .corner {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+  }
+  .corner-tl { top: 79px; left: 60px; border-top: 1px solid var(--gold); border-left: 1px solid var(--gold); opacity: 0.4; }
+  .corner-tr { top: 79px; right: 60px; border-top: 1px solid var(--gold); border-right: 1px solid var(--gold); opacity: 0.4; }
+  .corner-bl { bottom: -1px; left: 60px; border-bottom: 1px solid var(--gold); border-left: 1px solid var(--gold); opacity: 0.4; }
+  .corner-br { bottom: -1px; right: 60px; border-bottom: 1px solid var(--gold); border-right: 1px solid var(--gold); opacity: 0.4; }
+
+  .hero-mark {
+    margin-bottom: 32px;
+    opacity: 0;
+    animation: fadeUp 0.9s ease 0.2s forwards;
+  }
+
+  .eyebrow {
+    font-size: 9px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 400;
+    margin-bottom: 32px;
+    opacity: 0;
+    animation: fadeUp 0.9s ease 0.3s forwards;
+  }
+
+  .hero-headline {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: clamp(48px, 7vw, 88px);
+    line-height: 1.05;
+    letter-spacing: -1px;
+    color: var(--cream);
+    max-width: 800px;
+    margin-bottom: 12px;
+    opacity: 0;
+    animation: fadeUp 1s ease 0.45s forwards;
+  }
+
+  .hero-headline em {
+    font-style: italic;
+    color: var(--gold);
+    font-weight: 300;
+  }
+
+  .hero-sub {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 300;
+    font-size: clamp(18px, 2.5vw, 24px);
+    color: var(--muted);
+    margin-bottom: 56px;
+    letter-spacing: 0.3px;
+    max-width: 600px;
+    opacity: 0;
+    animation: fadeUp 1s ease 0.6s forwards;
+  }
+
+  /* CTA Button */
+  .cta-wrap {
+    opacity: 0;
+    animation: fadeUp 1s ease 0.75s forwards;
+  }
+
+  .cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 40px;
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    text-decoration: none;
+    font-size: 10px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    font-weight: 500;
+    position: relative;
+    overflow: hidden;
+    transition: color 0.35s ease;
+  }
+
+  .cta::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--gold);
+    transform: translateX(-101%);
+    transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .cta:hover::before { transform: translateX(0); }
+  .cta:hover { color: var(--navy); }
+  .cta span, .cta svg { position: relative; z-index: 1; }
+
+  .tagline-strip {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    margin-top: 72px;
+    opacity: 0;
+    animation: fadeUp 1s ease 0.9s forwards;
+  }
+
+  .strip-line {
+    width: 40px;
+    height: 1px;
+    background: var(--navy3);
+  }
+
+  .strip-text {
+    font-size: 8.5px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--cream);
+    font-weight: 300;
+  }
+
+  /* ── PILLAR CARDS ── */
+  .pillars {
+    display: flex;
+    gap: 1px;
+    margin-top: 72px;
+    width: 100%;
+    max-width: 1000px;
+    opacity: 0;
+    animation: fadeUp 1s ease 1.05s forwards;
+  }
+
+  .pillar {
+    flex: 1;
+    padding: 48px;
+    border: 1px solid rgba(30,58,95,0.6);
+    text-align: left;
+    position: relative;
+    background: rgba(13,27,46,0.6);
+    transition: border-color 0.3s ease, background 0.3s ease;
+  }
+
+  .pillar:hover {
+    border-color: rgba(200,169,110,0.3);
+    background: rgba(13,27,46,0.9);
+  }
+
+  .pillar-accent {
+    position: absolute;
+    top: -1px;
+    left: 0;
+    width: 32px;
+    height: 2px;
+    background: var(--gold);
+    opacity: 0.5;
+  }
+
+  .pillar-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 13px;
+    letter-spacing: 3px;
+    color: var(--gold);
+    opacity: 0.6;
+    margin-bottom: 16px;
+    display: block;
+  }
+
+  .pillar-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    font-size: 26px;
+    color: var(--cream);
+    line-height: 1.3;
+    margin-bottom: 16px;
+  }
+
+  .pillar-body {
+    font-size: 13px;
+    letter-spacing: 0.3px;
+    line-height: 1.9;
+    color: var(--muted);
+    font-weight: 300;
+  }
+
+  /* ── PROBLEMS WE SOLVE ── */
+  .problems { background: var(--navy2); }
+
+  .problems-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1px;
+    background: rgba(30,58,95,0.3);
+  }
+
+  .problem-card {
+    padding: 40px;
+    background: var(--navy2);
+    position: relative;
+    transition: background 0.3s ease;
+  }
+
+  .problem-card:hover {
+    background: rgba(22, 40, 68, 0.8);
+  }
+
+  .problem-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 28px;
+    height: 2px;
+    background: var(--gold);
+    opacity: 0.5;
+  }
+
+  .problem-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 12px;
+    letter-spacing: 3px;
+    color: var(--gold);
+    opacity: 0.5;
+    margin-bottom: 14px;
+    display: block;
+  }
+
+  .problem-card h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    font-size: 22px;
+    color: var(--cream);
+    line-height: 1.25;
+    margin-bottom: 12px;
+  }
+
+  .problem-card p {
+    font-size: 13px;
+    letter-spacing: 0.3px;
+    line-height: 1.85;
+    color: var(--muted);
+    font-weight: 300;
+  }
+
+  /* ── SERVICES ── */
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1px;
+    background: rgba(30,58,95,0.3);
+  }
+
+  .service-card {
+    padding: 40px;
+    background: var(--navy);
+    position: relative;
+    transition: background 0.3s ease;
+  }
+
+  .service-card:hover {
+    background: rgba(22, 40, 68, 0.6);
+  }
+
+  .service-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 28px;
+    height: 2px;
+    background: var(--gold);
+    opacity: 0.5;
+  }
+
+  .service-card h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    font-size: 20px;
+    color: var(--cream);
+    line-height: 1.3;
+    margin-bottom: 10px;
+  }
+
+  .service-card p {
+    font-size: 13px;
+    letter-spacing: 0.3px;
+    line-height: 1.85;
+    color: var(--muted);
+    font-weight: 300;
+  }
+
+  /* ── RESULTS ── */
+  .results { background: var(--navy2); }
+
+  .metrics-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: rgba(30,58,95,0.3);
+  }
+
+  .metric {
+    padding: 48px 32px;
+    background: var(--navy2);
+    text-align: center;
+    transition: background 0.3s ease;
+  }
+  .metric:hover { background: rgba(22, 40, 68, 0.8); }
+
+  .metric-number {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: clamp(36px, 4vw, 56px);
+    color: var(--gold);
+    line-height: 1;
+    margin-bottom: 14px;
+  }
+
+  .metric-label {
+    font-size: 12px;
+    letter-spacing: 0.3px;
+    line-height: 1.7;
+    color: var(--muted);
+    font-weight: 300;
+  }
+
+  /* ── ABOUT ── */
+  .about-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: start;
+  }
+
+  .about-text p {
+    font-size: 14px;
+    line-height: 1.9;
+    color: var(--muted);
+    font-weight: 300;
+    margin-bottom: 20px;
+    letter-spacing: 0.2px;
+  }
+
+  .highlight-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    background: rgba(30,58,95,0.3);
+  }
+
+  .highlight-card {
+    padding: 28px 32px;
+    background: var(--navy);
+    position: relative;
+    transition: background 0.3s ease;
+  }
+  .highlight-card:hover { background: rgba(22, 40, 68, 0.6); }
+
+  .highlight-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 28px;
+    height: 2px;
+    background: var(--gold);
+    opacity: 0.5;
+  }
+
+  .highlight-card h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    font-size: 18px;
+    color: var(--gold);
+    margin-bottom: 6px;
+  }
+
+  .highlight-card p {
+    font-size: 12px;
+    line-height: 1.7;
+    color: var(--muted);
+    font-weight: 300;
+  }
+
+  /* ── ENGAGEMENT ── */
+  .engagement { background: var(--navy2); }
+
+  .steps {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    background: rgba(30,58,95,0.3);
+  }
+
+  .step {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    padding: 28px 40px;
+    background: var(--navy2);
+    transition: background 0.3s ease;
+  }
+  .step:hover { background: rgba(22, 40, 68, 0.8); }
+
+  .step-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 14px;
+    letter-spacing: 3px;
+    color: var(--gold);
+    opacity: 0.6;
+    min-width: 32px;
+  }
+
+  .step h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    font-size: 18px;
+    color: var(--cream);
+    min-width: 260px;
+  }
+
+  .step p {
+    font-size: 13px;
+    color: var(--muted);
+    font-weight: 300;
+    letter-spacing: 0.2px;
+  }
+
+  /* ── IDEAL CLIENT ── */
+  .client-layout {
+    display: grid;
+    grid-template-columns: 1fr 1.3fr;
+    gap: 1px;
+    background: rgba(30,58,95,0.3);
+  }
+
+  .client-box {
+    padding: 48px;
+    background: var(--navy);
+    position: relative;
+  }
+
+  .client-box::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 28px;
+    height: 2px;
+    background: var(--gold);
+    opacity: 0.5;
+  }
+
+  .client-box h3 {
+    font-size: 9px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 500;
+    margin-bottom: 24px;
+  }
+
+  .client-box ul {
+    list-style: none;
+  }
+
+  .client-box li {
+    font-size: 14px;
+    line-height: 1.8;
+    color: var(--muted);
+    font-weight: 300;
+    padding: 6px 0 6px 20px;
+    position: relative;
+  }
+
+  .client-box li::before {
+    content: '\2014';
+    position: absolute;
+    left: 0;
+    color: var(--gold);
+    opacity: 0.5;
+  }
+
+  /* ── CTA SECTION ── */
+  .cta-section {
+    padding: 140px 60px;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+  }
+
+  .cta-section .section-title {
+    margin-bottom: 16px;
+  }
+
+  .cta-section .hero-sub {
+    opacity: 1;
+    animation: none;
+    margin-bottom: 48px;
+  }
+
+  .cta-info {
+    margin-top: 48px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .cta-info span {
+    font-size: 12px;
+    letter-spacing: 1px;
+    color: var(--muted);
+    font-weight: 300;
+  }
+
+  .cta-info a {
+    font-size: 12px;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.25s ease;
+    letter-spacing: 1px;
+  }
+  .cta-info a:hover { color: var(--gold); }
+
+  /* ── FOOTER ── */
+  footer {
+    position: relative;
+    z-index: 1;
+    padding: 28px 60px;
+    border-top: 1px solid rgba(30,58,95,0.5);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .footer-copy {
+    font-size: 9px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--muted2);
+    font-weight: 300;
+  }
+
+  .footer-email {
+    font-size: 9px;
+    letter-spacing: 2px;
+    color: var(--muted);
+    text-decoration: none;
+    text-transform: lowercase;
+    transition: color 0.25s ease;
+  }
+  .footer-email:hover { color: var(--gold); }
+
+  /* ── SCROLL ANIMATIONS ── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeDown {
+    from { opacity: 0; transform: translateY(-12px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    nav { padding: 18px 28px; }
+    nav.scrolled { padding: 14px 28px; }
+    .nav-links { display: none; position: absolute; top: 100%; left: 0; right: 0; background: rgba(13,27,46,0.98); flex-direction: column; padding: 24px 28px; gap: 16px; border-bottom: 1px solid rgba(30,58,95,0.5); }
+    .nav-links.open { display: flex; }
+    .hamburger { display: block; }
+    .hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+    .hero { padding: 100px 28px 60px; }
+    .hero .rule-top, .hero .rule-bottom { left: 28px; right: 28px; }
+    .corner-tl, .corner-bl { left: 28px; }
+    .corner-tr, .corner-br { right: 28px; }
+    .pillars { flex-direction: column; }
+    .pillar { padding: 28px; }
+
+    .section { padding: 80px 28px; }
+    .problems-grid { grid-template-columns: 1fr; }
+    .services-grid { grid-template-columns: 1fr; }
+    .metrics-row { grid-template-columns: 1fr 1fr; }
+    .about-layout { grid-template-columns: 1fr; }
+    .client-layout { grid-template-columns: 1fr; }
+    .step { flex-direction: column; gap: 8px; align-items: flex-start; padding: 24px 28px; }
+    .step h4 { min-width: auto; }
+
+    footer { padding: 24px 28px; flex-direction: column; gap: 10px; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <a class="nav-logo" href="#">
+    <!-- Plinth Icon Mark: classical column pedestal -->
+    <svg width="36" height="36" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- Base (plinth) -->
+      <rect x="8" y="42" width="36" height="5" rx="1" fill="#c8a96e" opacity="0.9"/>
+      <rect x="11" y="37" width="30" height="5" rx="0.5" fill="#c8a96e" opacity="0.6"/>
+      <!-- Column shaft (tapered) -->
+      <polygon points="16,37 18,14 34,14 36,37" fill="#f0ede8" opacity="0.9"/>
+      <!-- Capital (top) -->
+      <rect x="15" y="10" width="22" height="5" rx="1" fill="#f0ede8" opacity="0.85"/>
+      <rect x="12" y="7" width="28" height="4" rx="1" fill="#c8a96e" opacity="0.7"/>
+      <!-- Fluting lines -->
+      <line x1="22" y1="16" x2="21" y2="35" stroke="#0d1b2e" stroke-width="0.6" opacity="0.2"/>
+      <line x1="26" y1="16" x2="26" y2="35" stroke="#0d1b2e" stroke-width="0.6" opacity="0.2"/>
+      <line x1="30" y1="16" x2="31" y2="35" stroke="#0d1b2e" stroke-width="0.6" opacity="0.2"/>
+    </svg>
+    <div class="nav-divider"></div>
+    <div class="nav-wordmark">
+      <div class="nav-brand">
+        <span class="nav-name-primary">Plinth</span>
+        <span class="nav-name-secondary">Strategies</span>
+      </div>
+    </div>
+  </a>
+
+  <div class="nav-links" id="navLinks">
+    <a href="#problems">Problems</a>
+    <a href="#services">Services</a>
+    <a href="#results">Results</a>
+    <a href="#about">About</a>
+    <a href="#contact" class="cta-link"><span>Let's Talk</span></a>
+  </div>
+
+  <button class="hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="rule-top"></div>
+  <div class="corner corner-tl"></div>
+  <div class="corner corner-tr"></div>
+  <div class="corner corner-bl"></div>
+  <div class="corner corner-br"></div>
+
+  <div class="hero-mark">
+    <!-- Large Plinth Mark -->
+    <svg width="64" height="72" viewBox="0 0 64 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="6" y="60" width="52" height="8" rx="1.5" fill="#c8a96e" opacity="0.9"/>
+      <rect x="10" y="52" width="44" height="8" rx="1" fill="#c8a96e" opacity="0.6"/>
+      <polygon points="16,52 19,16 45,16 48,52" fill="#f0ede8" opacity="0.9"/>
+      <rect x="16" y="9" width="32" height="8" rx="1.5" fill="#f0ede8" opacity="0.85"/>
+      <rect x="12" y="4" width="40" height="6" rx="1.5" fill="#c8a96e" opacity="0.7"/>
+      <line x1="26" y1="18" x2="24" y2="50" stroke="#0d1b2e" stroke-width="0.8" opacity="0.2"/>
+      <line x1="32" y1="18" x2="32" y2="50" stroke="#0d1b2e" stroke-width="0.8" opacity="0.2"/>
+      <line x1="38" y1="18" x2="40" y2="50" stroke="#0d1b2e" stroke-width="0.8" opacity="0.2"/>
+    </svg>
+  </div>
+
+  <div class="eyebrow">Strategic Advisory</div>
+
+  <h1 class="hero-headline">
+    We build the foundation.<br><em>You scale.</em>
+  </h1>
+
+  <p class="hero-sub">Operational clarity and revenue growth for B2B tech companies building what's next.</p>
+
+  <div class="cta-wrap">
+    <a class="cta" href="#contact">
+      <span>Start a Conversation</span>
+      <svg width="14" height="10" viewBox="0 0 14 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M1 5h12M8 1l5 4-5 4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </a>
+  </div>
+
+  <div class="tagline-strip">
+    <div class="strip-line"></div>
+    <span class="strip-text">Operational Excellence &nbsp;&middot;&nbsp; Revenue Strategy &nbsp;&middot;&nbsp; Scalable Growth</span>
+    <div class="strip-line"></div>
+  </div>
+
+  <div class="pillars">
+    <div class="pillar">
+      <div class="pillar-accent"></div>
+      <span class="pillar-num">01</span>
+      <div class="pillar-title">Operational Infrastructure</div>
+      <p class="pillar-body">We build the systems, workflows, and processes that let hypergrowth companies scale without the chaos &mdash; so your team can move fast without breaking things.</p>
+    </div>
+    <div class="pillar">
+      <div class="pillar-accent"></div>
+      <span class="pillar-num">02</span>
+      <div class="pillar-title">Revenue Growth Strategy</div>
+      <p class="pillar-body">We identify innovative ways to leverage your existing assets, unlock new revenue streams, and build strategic partnerships &mdash; without scaling headcount aggressively.</p>
+    </div>
+  </div>
+
+  <div class="rule-bottom"></div>
+</section>
+
+<!-- PROBLEMS WE SOLVE -->
+<section class="section problems" id="problems">
+  <div class="section-inner">
+    <div class="reveal">
+      <div class="section-label">Problems We Solve</div>
+      <div class="section-title">We work with companies who...</div>
+      <div class="gold-rule"></div>
+    </div>
+    <div class="problems-grid reveal">
+      <div class="problem-card">
+        <span class="problem-num">01</span>
+        <h3>Can't Scale Custom Work</h3>
+        <p>Sales is promising one-off solutions. Delivery is overwhelmed. Margins are eroding with every bespoke engagement, and there's no clear path to making custom work repeatable.</p>
+      </div>
+      <div class="problem-card">
+        <span class="problem-num">02</span>
+        <h3>Have Inconsistent Deal Structures</h3>
+        <p>Every deal is negotiated from scratch. Legal, finance, and ops are bottlenecked reviewing unique terms. Pricing is inconsistent and margin visibility is poor.</p>
+      </div>
+      <div class="problem-card">
+        <span class="problem-num">03</span>
+        <h3>Need a Solutions Function</h3>
+        <p>No one owns the critical space between what sales promises and what product delivers. Technical pre-sales, solution design, and implementation handoffs are falling through the cracks.</p>
+      </div>
+      <div class="problem-card">
+        <span class="problem-num">04</span>
+        <h3>Have Unmonetized Partnerships</h3>
+        <p>Strategic partnerships have been signed but sit dormant. There's no commercialization path, no activation plan, and no revenue tracking against partnership investments.</p>
+      </div>
+      <div class="problem-card">
+        <span class="problem-num">05</span>
+        <h3>Want to Productize Services</h3>
+        <p>Custom implementation work could be productized into scalable offerings, but no one has the bandwidth or framework to package, price, and bring them to market.</p>
+      </div>
+      <div class="problem-card">
+        <span class="problem-num">06</span>
+        <h3>Are Outgrowing Their Infrastructure</h3>
+        <p>The processes, tools, and team structures that worked at $20M simply don't work at $50M. Growth has outpaced the operational backbone needed to sustain it.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="section" id="services">
+  <div class="section-inner">
+    <div class="reveal">
+      <div class="section-label">What We Do</div>
+      <div class="section-title">Core <em>Services</em></div>
+      <div class="gold-rule"></div>
+    </div>
+    <div class="services-grid reveal">
+      <div class="service-card">
+        <h3>GTM Strategy</h3>
+        <p>Go-to-market planning, positioning, and execution frameworks that drive revenue from day one.</p>
+      </div>
+      <div class="service-card">
+        <h3>Operational Efficiency & Workflows</h3>
+        <p>Streamlined processes for local and global scale that eliminate bottlenecks and reduce cost.</p>
+      </div>
+      <div class="service-card">
+        <h3>ICP & Messaging</h3>
+        <p>Ideal customer profiling and targeted messaging strategy that resonates and converts.</p>
+      </div>
+      <div class="service-card">
+        <h3>Innovation</h3>
+        <p>New approaches to revenue generation and market expansion that unlock growth beyond your core.</p>
+      </div>
+      <div class="service-card">
+        <h3>Strategic Partnerships</h3>
+        <p>Partnership commercialization, activation, and revenue tracking that delivers measurable ROI.</p>
+      </div>
+      <div class="service-card">
+        <h3>Strategic Sales</h3>
+        <p>Deal structuring, pricing models, and sales enablement that maximize deal value and velocity.</p>
+      </div>
+      <div class="service-card">
+        <h3>Solutioning</h3>
+        <p>Consultative engagements that bridge the gap between what sales promises and what delivery builds.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESULTS -->
+<section class="section results" id="results">
+  <div class="section-inner">
+    <div class="reveal">
+      <div class="section-label">Results</div>
+      <div class="section-title">Proof <em>Points</em></div>
+      <div class="gold-rule"></div>
+    </div>
+    <div class="metrics-row reveal">
+      <div class="metric">
+        <div class="metric-number">$5M</div>
+        <div class="metric-label">New vertical launched<br>from $0 in first cycle</div>
+      </div>
+      <div class="metric">
+        <div class="metric-number">65+</div>
+        <div class="metric-label">Deal packages built<br>generating $2M+ in spend</div>
+      </div>
+      <div class="metric">
+        <div class="metric-number">$1.2M</div>
+        <div class="metric-label">Annual savings via<br>operational solutions</div>
+      </div>
+      <div class="metric">
+        <div class="metric-number">80%+</div>
+        <div class="metric-label">Reduction in task time<br>via AI-driven automation</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="section" id="about">
+  <div class="section-inner">
+    <div class="reveal">
+      <div class="section-label">About</div>
+      <div class="section-title">Craig <em>Becher</em></div>
+      <div class="section-sub">Revenue Commercialization Expert &nbsp;&middot;&nbsp; Ad Tech & Digital Media</div>
+    </div>
+    <div class="about-layout reveal">
+      <div class="about-text">
+        <p>18+ years in ad tech and digital media, building and scaling solutions functions, partnerships, and revenue operations from the ground up at companies navigating the complexity of hypergrowth.</p>
+        <p>My approach is hands-on and execution-focused. I don't just advise &mdash; I embed with your team to build the frameworks, processes, and strategies that turn custom work into scalable revenue engines.</p>
+        <p>From cross-functional team leadership and solution architecture to GTM strategy, deal structuring, and pricing strategy &mdash; senior-level execution without a full-time executive hire.</p>
+      </div>
+      <div class="highlight-cards">
+        <div class="highlight-card">
+          <h4>OpenX</h4>
+          <p>Senior Director, Global Solutions &amp; GTM Strategy &amp; Ops &amp; Sales Strategy &amp; Commercialization</p>
+        </div>
+        <div class="highlight-card">
+          <h4>Hybrid Theory</h4>
+          <p>Senior Director, Channel Partnerships &amp; Sales Director</p>
+        </div>
+        <div class="highlight-card">
+          <h4>Earlier Career</h4>
+          <p>Senior roles at MiQ and Rocket Fuel driving revenue and strategic partnerships</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ENGAGEMENT -->
+<section class="section engagement" id="engagement">
+  <div class="section-inner">
+    <div class="reveal">
+      <div class="section-label">How We Work</div>
+      <div class="section-title">Engagement <em>Model</em></div>
+      <div class="section-sub">Retainer-based engagements with defined scope protections</div>
+    </div>
+    <div class="steps reveal">
+      <div class="step">
+        <span class="step-num">01</span>
+        <h4>Strategic Assessment & Roadmap</h4>
+        <p>Comprehensive evaluation in the first 30 days</p>
+      </div>
+      <div class="step">
+        <span class="step-num">02</span>
+        <h4>Framework & Process Design</h4>
+        <p>Documentation and systematization of workflows</p>
+      </div>
+      <div class="step">
+        <span class="step-num">03</span>
+        <h4>Implementation Support</h4>
+        <p>Hands-on support and team training</p>
+      </div>
+      <div class="step">
+        <span class="step-num">04</span>
+        <h4>Leadership Sync</h4>
+        <p>Weekly alignment with executive team</p>
+      </div>
+      <div class="step">
+        <span class="step-num">05</span>
+        <h4>Ongoing Access</h4>
+        <p>Slack and email access between sessions</p>
+      </div>
+      <div class="step">
+        <span class="step-num">06</span>
+        <h4>Quarterly Reviews</h4>
+        <p>Business reviews to track progress and recalibrate</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- IDEAL CLIENT -->
+<section class="section" id="ideal-client">
+  <div class="section-inner">
+    <div class="reveal">
+      <div class="section-label">Ideal Client</div>
+      <div class="section-title">Who We <em>Help</em></div>
+      <div class="gold-rule"></div>
+    </div>
+    <div class="client-layout reveal">
+      <div class="client-box">
+        <h3>Target Profile</h3>
+        <ul>
+          <li>Series B&ndash;D B2B tech companies</li>
+          <li>$10M&ndash;$100M in revenue</li>
+          <li>Senior revenue leaders looking to scale without adding layers of headcount</li>
+        </ul>
+      </div>
+      <div class="client-box">
+        <h3>A Strong Fit If Your Team Is...</h3>
+        <ul>
+          <li>Scaling fast but looking to improve deal velocity and margin</li>
+          <li>Sitting on partnership or integration opportunities not yet fully monetized</li>
+          <li>Standing up a solutions, partnerships, or ops function</li>
+          <li>Ready to make custom work repeatable and scalable</li>
+          <li>Looking for senior-level execution without a full-time exec hire</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section" id="contact">
+  <svg width="48" height="54" viewBox="0 0 64 72" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin-bottom: 24px; opacity: 0.8;">
+    <rect x="6" y="60" width="52" height="8" rx="1.5" fill="#c8a96e" opacity="0.9"/>
+    <rect x="10" y="52" width="44" height="8" rx="1" fill="#c8a96e" opacity="0.6"/>
+    <polygon points="16,52 19,16 45,16 48,52" fill="#f0ede8" opacity="0.9"/>
+    <rect x="16" y="9" width="32" height="8" rx="1.5" fill="#f0ede8" opacity="0.85"/>
+    <rect x="12" y="4" width="40" height="6" rx="1.5" fill="#c8a96e" opacity="0.7"/>
+    <line x1="26" y1="18" x2="24" y2="50" stroke="#0d1b2e" stroke-width="0.8" opacity="0.15"/>
+    <line x1="32" y1="18" x2="32" y2="50" stroke="#0d1b2e" stroke-width="0.8" opacity="0.15"/>
+    <line x1="38" y1="18" x2="40" y2="50" stroke="#0d1b2e" stroke-width="0.8" opacity="0.15"/>
+  </svg>
+  <div class="section-title" style="margin-bottom: 16px;">Plinth <em>Strategies</em></div>
+  <p class="hero-sub" style="opacity: 1; animation: none; margin-bottom: 48px;">Let's talk about what scalable revenue<br>looks like for your business.</p>
+  <a class="cta" href="mailto:craig@plinthstrategies.com">
+    <span>Get In Touch</span>
+    <svg width="14" height="10" viewBox="0 0 14 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M1 5h12M8 1l5 4-5 4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </a>
+  <div class="cta-info">
+    <span style="color: var(--cream); font-weight: 400;">Craig Becher</span>
+    <a href="mailto:craig@plinthstrategies.com">craig@plinthstrategies.com</a>
+    <a href="https://plinthstrategies.com">plinthstrategies.com</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span class="footer-copy">&copy; 2026 Plinth Strategies</span>
+  <a class="footer-email" href="mailto:craig@plinthstrategies.com">craig@plinthstrategies.com</a>
+</footer>
+
+<script>
+  // Nav scroll
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 50);
+  });
+
+  // Hamburger
+  const hamburger = document.getElementById('hamburger');
+  const navLinks = document.getElementById('navLinks');
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('open');
+    navLinks.classList.toggle('open');
+  });
+  navLinks.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      hamburger.classList.remove('open');
+      navLinks.classList.remove('open');
+    });
+  });
+
+  // Scroll reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) entry.target.classList.add('visible');
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
